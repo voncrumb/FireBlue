@@ -16,10 +16,10 @@ module.exports = async (profileScraper, rootProfiles, injection) => new Promise(
   console.log(rootProfiles)
   console.log(injection)
 
-  const WORKER_INTERVAL_MS = config.workerIntervalWaitTime
+  const WORKER_INTERVAL_MS = 1000 //config.workerIntervalWaitTime
   avoidAlreadyCrawled.updateAlreadyCrawledProfiles(rootProfiles)
 
-  let currentProfilesToCrawl = rootProfiles
+  let currentProfilesToCrawl = [...rootProfiles]
   let nextProfilesToCrawl = []
   
 
@@ -46,6 +46,7 @@ module.exports = async (profileScraper, rootProfiles, injection) => new Promise(
   }
 
   setInterval(() => {
+    console.log(rootProfiles)
     if (currentProfilesToCrawl.length === 0 && nextProfilesToCrawl.length === 0) {
       logger.info('there is no profiles to crawl right now...')
     } else if (currentProfilesToCrawl.length === 0) {
