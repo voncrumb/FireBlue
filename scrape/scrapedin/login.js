@@ -55,7 +55,7 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
           logger.warn('solveRecaptchas xd')
           await Promise.all([
             page.waitForNavigation(),
-            page.click(`#recaptcha-demo-submit`)
+            page.click(`#recaptcha-checkbox`)
           ])      
       } catch (error) {
           logger.warn('error xd', error)
