@@ -20,7 +20,9 @@ module.exports =
       scrapedin(config)
         .then((profileScraper) => crawl(profileScraper, ["https://www.linkedin.com/" + user_id]))
     }
-    scrapedin(config, idCallback);
+    var yeet = idCallback
+    console.log(yeet);
+    scrapedin(config, yeet);
 
   }
   
