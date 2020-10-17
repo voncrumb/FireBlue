@@ -1,10 +1,22 @@
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-extra')
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 const login = require('./login')
 const profile = require('./profile/profile')
 const company = require('./company/company')
 const logger = require('./logger')(__filename)
 
 module.exports = async ({ cookies, email, password, isHeadless, hasToLog, hasToGetContactInfo, puppeteerArgs, puppeteerAuthenticate, endpoint } = { isHeadless: true, hasToLog: false }, idCallback = undefined) => {
+  puppeteer.use(StealthPlugin())
+  const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha')
+  puppeteer.use(
+  RecaptchaPlugin({
+    provider: {
+      id: '2captcha',
+      token: '17984413ca676d34ca76c1617f9b3e33' // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY ⚡
+    },
+    visualFeedback: true // colorize reCAPTCHAs (violet = detected, green = solved)
+  })
+)
   if (!hasToLog) {
     logger.stopLogging()
   }
@@ -27,6 +39,7 @@ module.exports = async ({ cookies, email, password, isHeadless, hasToLog, hasToG
 
     try {
       await login(browser, email, password, idCallback);
+      //console.log("IDCALLBACK SCRAPEDIN.JS", idCallback)
       if (idCallback) {
         return;
       }
@@ -41,6 +54,7 @@ module.exports = async ({ cookies, email, password, isHeadless, hasToLog, hasToG
   }
 
   if (idCallback != undefined) {
+    print("SCRAPEDIN.JS CALLBACK IS UNDEFINED?")
     return;
   }
 

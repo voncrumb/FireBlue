@@ -17,11 +17,11 @@ module.exports =
 
     const idCallback = (user_id) => {
       console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", user_id)
+      print(config)
       scrapedin(config)
-        .then((profileScraper) => crawl(profileScraper, ["https://www.linkedin.com/" + user_id]))
+        .then((profileScraper) => crawl(profileScraper, ["https://www.linkedin.com" + user_id]))
     }
-    scrapedin(config, idCallback);
 
+    scrapedin(config, idCallback);
   }
-  
 }
