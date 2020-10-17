@@ -23,7 +23,7 @@ module.exports = {
   async store(req, res) {
     const { username, password } = req.body;
     console.log(username, password)
-    begin.begin(username, password)
+    //begin.begin(username, password)
 
     const userExists = await Dev.findOne({ user: username });
     if (userExists) {
