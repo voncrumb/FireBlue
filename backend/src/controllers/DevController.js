@@ -4,6 +4,7 @@ const Dev = require('../models/Dev');
 module.exports = {
   async index(req, res) {
     const { user, password } = req.headers;
+    console.log(user, password)
 
     const loggedDev = await Dev.findById(user);
 
@@ -20,7 +21,8 @@ module.exports = {
 
   async store(req, res) {
     const { username, password } = req.body;
-    console.log(username, password)
+    console.log(username, password);
+    
     const userExists = await Dev.findOne({ user: username });
 
     if (userExists) {
