@@ -1,6 +1,8 @@
 .main-container {
+  
   max-width: 980px;
   margin: 0 auto;
+  
   padding: 50px 0;
   text-align: center;
 }
@@ -73,6 +75,7 @@
 }
 
 .match-container {
+  
   position: absolute;
   top: 0;
   left: 0;
@@ -114,4 +117,87 @@
   font-size: 18px;
   margin-top: 30px;
   cursor: pointer;
+}
+
+.img {
+  height: 200px;
+  width: 200px;
+}
+
+.side-bar{
+  position: fixed;
+  background-color: #e2e5e6;
+  width: 300px;
+  top: 0;
+  bottom: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.match{
+  background-color: rgb(0, 29, 156);
+  height: 50px;
+  width: 300px;
+  font-size: 24px;
+  border: none;
+  color: rgb(255, 255, 255);
+  border-top: #e2e5e6 solid 2px;
+  border-bottom: #e2e5e6 solid 2px;
+
+  /*background-color: #4CAF50; /* Green */
+
+  text-decoration: none;
+
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+
+.match:hover {
+  background-color: rgb(79, 106, 228);
+  color: white;
+}
+
+
+
+
+.match div{
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.match p{
+  float: left;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.match img{
+  vertical-align: top;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  float: right;
+  /*margin-left: 200px;*/
+  object-fit: cover;
+}
+
+.chat-box{
+  position: fixed !important;
+  width: 500px;
+  height: 500px;
+  bottom: -5px;
+  right: 5px;
+}
+
+
+.title{
+  font-size: 32px;
+  margin: 10px;
+  color: rgb(88, 88, 88);
+  text-align: center;
+}
+
+.profile{
+  object-fit: cover; 
 }

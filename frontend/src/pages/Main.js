@@ -5,10 +5,14 @@ import './Main.css';
 
 import api from '../services/api';
 
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.png';
 import dislike from '../assets/dislike.svg';
 import like from '../assets/like.svg';
 import itsamatch from '../assets/itsamatch.png';
+
+import 'react-chatbox-component/dist/style.css';
+import {ChatBox} from 'react-chatbox-component';
+
 
 export default function Main({ match }) {
   const [users, setUsers] = useState([]);
@@ -21,7 +25,7 @@ export default function Main({ match }) {
           user: match.params.id,
         }
       })
-
+      console.log(response)
       setUsers(response.data);
     }
 
@@ -54,19 +58,57 @@ export default function Main({ match }) {
     setUsers(users.filter(user => user._id !== id));
   }
 
+  var data = [
+    ["Ella", "https://pics.me.me/selfy-thread-1-63068404.png"], 
+    ["Billy", "https://pics.me.me/selfy-thread-1-63068404.png"], 
+    ["Sam", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Jack", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Meme Man", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Yee", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Pepe", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Stevy", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Liam", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Will", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["I Want Die", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["End Mii", "https://pics.me.me/selfy-thread-1-63068404.png"],
+  ]
+  var mataches = data.map(name => {
+    return (
+    <button className="match"><div><p>{name[0]}</p><img src={name[1]}></img></div></button>
+    )
+  })
+
+  const messages = [
+    {
+      "text": "Hello there",
+      "id": "1",
+      "sender": {
+        "name": "Ironman",
+        "uid": "user1",
+        "avatar": "https://data.cometchat.com/assets/images/avatars/ironman.png",
+      },
+    },
+  ]
+  
+
   return (
+    <div>
+    <div className="side-bar">
+    <div className="title">Matches</div>
+    {mataches}
+    </div>
     <div className="main-container">
       <Link to="/">
-        <img src={logo} alt="Tindev" />
+        <img src={logo} alt="Tindev" className="img"/>
       </Link>
 
       { users.length > 0 ? (
         <ul>  
           {users.map(user => (
             <li key={user._id}>
-              <img src={user.avatar} alt={user.name} />
+              <img className="profile" src={user.profile.imageurl} alt={user.profile.name} />
               <footer>
-                <strong>{user.name}</strong>
+                <strong>{user.profile.name}</strong>
                 <p>{user.bio}</p>
               </footer>
 
@@ -82,7 +124,7 @@ export default function Main({ match }) {
           ))}
         </ul>
       ) : (
-        <div className="empty">Acabou :(</div>
+        <div className="empty">End of the line :(</div>
       ) }
 
       { matchDev && (
@@ -93,9 +135,13 @@ export default function Main({ match }) {
           <strong>{matchDev.name}</strong>
           <p>{matchDev.bio}</p>
 
-          <button type="button" onClick={() => setMatchDev(null)}>FECHAR</button>
+          <button type="button" onClick={() => setMatchDev(null)}>CLOSE</button>
         </div>
       ) }
+    </div>
+    <ChatBox className="chat-box"
+    messages={messages}
+    />
     </div>
   )
 }
