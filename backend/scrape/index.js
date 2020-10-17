@@ -16,5 +16,4 @@ if(configFile.cookiesFile && configFile.cookiesFile.length) {
   config.cookies = JSON.parse(cookies)
 }
 
-scrapedin(config)
-  .then((profileScraper) => crawl(profileScraper, configFile.rootProfiles))
+scrapedin(config).then((profileScraper) => crawl(profileScraper, configFile.rootProfiles))

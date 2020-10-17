@@ -27,7 +27,7 @@ export default function Login({ history }) {
       <form onSubmit={handleSubmit}>
         <img className="logo" src={logo} alt="Tindev" />
         <input 
-          placeholder="LinkedIn Username / Email"
+          placeholder="LinkedIn Email"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />

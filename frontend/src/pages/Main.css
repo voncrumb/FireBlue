@@ -135,9 +135,11 @@
 }
 
 .match{
-  background-color: rgb(0, 29, 156);
+  border-radius: 8px;
+  background-color: rgb(32, 60, 184);
   height: 50px;
-  width: 300px;
+  width: 280px;
+  margin-left: 10px;
   font-size: 24px;
   border: none;
   color: rgb(255, 255, 255);
@@ -145,7 +147,7 @@
   border-bottom: #e2e5e6 solid 2px;
 
   /*background-color: #4CAF50; /* Green */
-
+  outline:none;
   text-decoration: none;
 
   transition-duration: 0.4s;
@@ -154,8 +156,13 @@
 
 
 .match:hover {
+  outline:none;
   background-color: rgb(79, 106, 228);
   color: white;
+}
+
+.match:focus{
+  outline:none;
 }
 
 
@@ -187,15 +194,27 @@
   width: 500px;
   height: 500px;
   bottom: -5px;
-  right: 5px;
+  right: 120px;
 }
-
+.positions{
+  font-size: 10px;
+  line-height: 20px;
+  color: #999;
+}
 
 .title{
   font-size: 32px;
   margin: 10px;
   color: rgb(88, 88, 88);
   text-align: center;
+}
+
+.show-chat{
+  position: fixed !important;
+  height: 50px;
+  width: 100px;
+  bottom: 5px;
+  right: 5px;
 }
 
 .profile{

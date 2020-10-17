@@ -12,6 +12,7 @@ import itsamatch from '../assets/itsamatch.png';
 
 import 'react-chatbox-component/dist/style.css';
 import {ChatBox} from 'react-chatbox-component';
+import ReactSpoiler from "react-spoiler";
 
 
 export default function Main({ match }) {
@@ -58,7 +59,7 @@ export default function Main({ match }) {
     setUsers(users.filter(user => user._id !== id));
   }
 
-  var data = [
+  var [matches, changeMatches] = useState([
     ["Ella", "https://pics.me.me/selfy-thread-1-63068404.png"], 
     ["Billy", "https://pics.me.me/selfy-thread-1-63068404.png"], 
     ["Sam", "https://pics.me.me/selfy-thread-1-63068404.png"],
@@ -71,25 +72,44 @@ export default function Main({ match }) {
     ["Will", "https://pics.me.me/selfy-thread-1-63068404.png"],
     ["I Want Die", "https://pics.me.me/selfy-thread-1-63068404.png"],
     ["End Mii", "https://pics.me.me/selfy-thread-1-63068404.png"],
-  ]
-  var mataches = data.map(name => {
+  ]);
+
+  var mataches = matches.map(name => {
     return (
-    <button className="match"><div><p>{name[0]}</p><img src={name[1]}></img></div></button>
+    <button className="match" onClick={openChat}><div><p>{name[0]}</p><img src={name[1]}></img></div></button>
     )
   })
 
-  const messages = [
+  const [messages, updateMessage] =  useState([
     {
       "text": "Hello there",
       "id": "1",
       "sender": {
-        "name": "Ironman",
+        "name": "Yeet",
         "uid": "user1",
         "avatar": "https://data.cometchat.com/assets/images/avatars/ironman.png",
       },
-    },
-  ]
+    }
+  ])
+
+  var showChat = false;
+
+  function openChat(userId){
+    mudarSpoiler(true)
+    updateMessage([
+      {
+        "text": "Hello dasdadadsthere",
+        "id": "1",
+        "sender": {
+          "name": "Yeet",
+          "uid": "user1",
+          "avatar": "https://data.cometchat.com/assets/images/avatars/ironman.png",
+        },
+      }
+    ]);
+  }
   
+  const [spoiler, mudarSpoiler] = useState(false);
 
   return (
     <div>
@@ -109,7 +129,14 @@ export default function Main({ match }) {
               <img className="profile" src={user.profile.imageurl} alt={user.profile.name} />
               <footer>
                 <strong>{user.profile.name}</strong>
-                <p>{user.bio}</p>
+              
+                <p>Location: {user.profile.location}</p>
+                <div>{user.profile.headline}</div>
+                {
+                //user.positions.map(a => { (<div>{a}</div>) })}
+                  user.positions && user.positions.length > 0? ( <div>{user.positions.map(a => { return (<div className="positions">{a.companyName}: {a.title}</div>)})}</div> ) : ( <div></div> )
+                }
+                
               </footer>
 
               <div className="buttons">
@@ -139,9 +166,12 @@ export default function Main({ match }) {
         </div>
       ) }
     </div>
-    <ChatBox className="chat-box"
-    messages={messages}
-    />
+    <div hidden={!spoiler}><ChatBox  className="chat-box" messages={messages}/><button className="show-chat" onClick={() => mudarSpoiler(!spoiler)}>Close Chat</button></div>
+    
+
+    
+    
+    
     </div>
   )
 }

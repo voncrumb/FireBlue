@@ -8247,6 +8247,11 @@ react-scripts@3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
+react-spoiler@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/react-spoiler/-/react-spoiler-0.4.3.tgz#b7dc0365f68016c72e8431c9bf1f91b8127ef792"
+  integrity sha512-fHj8pUAkQkuLJ6oR0+Rtuqaqbrwe5kzAdNkc+bWhghYONL3mfEBu7/y8d11j4Cx2miCTvTRexFKquru+aP8V6w==
+
 react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
