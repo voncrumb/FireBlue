@@ -13,8 +13,7 @@ export default function Login({ history }) {
     e.preventDefault();
 
     const response = await api.post('/devs', {
-      username,
-      password
+      username
     });
 
     const { _id } = response.data;
