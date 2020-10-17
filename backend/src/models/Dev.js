@@ -17,11 +17,11 @@ const DevSchema = new Schema({
     summary: String
   },
   likes: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Dev',
   }],
   dislikes: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Dev',
   }],
 }, {
