@@ -48,7 +48,7 @@ const Dev = mongoose.model('Dev', DevSchema)
 
 module.exports = async (profileId, content, injection) => {
 
-  console.log('saving')
+  console.log("SAVING PROFILE", content.name)
   //console.log(content)
   
   const userExists = await Dev.findOne({ user: profileId });
@@ -63,7 +63,7 @@ module.exports = async (profileId, content, injection) => {
   });
 
 
-  profile.save(function (err) {
+    profile.save(function (err) {
     console.log("in save callback");
     if (err) return console.log(err);
     console.log("saved")

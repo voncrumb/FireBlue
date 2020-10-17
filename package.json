@@ -7,6 +7,10 @@
     "json": "^10.0.0",
     "lerna": "^3.16.4",
     "mongoose": "^5.10.9",
+    "puppeteer": "^5.3.1",
+    "puppeteer-extra": "^3.1.15",
+    "puppeteer-extra-plugin-recaptcha": "^3.1.18",
+    "puppeteer-extra-plugin-stealth": "^2.6.2",
     "react-spoiler": "^0.4.3",
     "scrapedin": "^1.0.21"
   },
