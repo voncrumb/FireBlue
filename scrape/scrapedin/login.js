@@ -45,17 +45,22 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
     })
     .catch(async () => {
       logger.warn('successful login element was not found')
-
-      for (const frame of page.mainFrame().childFrames()) {
-        // Attempt to solve any potential reCAPTCHAs in those frames
-        await frame.solveRecaptchas()
+      try {
+        for (const frame of page.mainFrame().childFrames()) {
+            // Attempt to solve any potential reCAPTCHAs in those frames
+            await frame.solveRecaptchas()
+            logger.warn('FRAME solveRecaptchas xd')
+          }
+          await page.solveRecaptchas()
+          logger.warn('solveRecaptchas xd')
+          await Promise.all([
+            page.waitForNavigation(),
+            page.click(`#recaptcha-demo-submit`)
+          ])      
+      } catch (error) {
+          logger.warn('error xd', error)
+          throw (error)
       }
-      await page.solveRecaptchas()
-      await Promise.all([
-        page.waitForNavigation(),
-        page.click(`#recaptcha-demo-submit`)
-      ])
-      await page.screenshot({ path: 'response.png', fullPage: true })
       
       const emailError = await page.evaluate(() => {
         const e = document.querySelector('div[error-for=username]')
