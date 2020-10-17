@@ -20,6 +20,7 @@ const DevSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // TODO Add a "sources" array field for each user that by default has the user id of the person that scanned them (maybe store userid or email)
   positions: [{
     title: String,
     companyName: String
@@ -52,6 +53,7 @@ module.exports = async (profileId, content, injection) => {
   
   const userExists = await Dev.findOne({ user: profileId });
   if (userExists || !content.profile) {
+    // TODO append to list sources of the person that's currently scanning them if they are not already in the sources array (maybe store userid or email)
     return;
   }
 
