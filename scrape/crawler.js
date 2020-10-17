@@ -13,6 +13,8 @@ module.exports = async (profileScraper, rootProfiles, injection) => new Promise(
     avoidAlreadyCrawled
   } = Object.assign({}, dependencies, injection)
 
+  console.log(rootProfiles)
+  console.log(injection)
 
   const WORKER_INTERVAL_MS = config.workerIntervalWaitTime
   avoidAlreadyCrawled.updateAlreadyCrawledProfiles(rootProfiles)

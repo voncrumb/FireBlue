@@ -25,15 +25,21 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
   })
     .then(async () => {
 
-
+      console.log(await page.url());
 
       logger.info('logged feed page selector found')
       
       const content = await page.content();
-      const $ = cheerio.load(content)
+      //console.log(content)
+      const $ = cheerio.load(content);
 
-      const important_user_id = $('[data-control-name="identity_profile_photo"]').parent().attr('href');
+      var myRegexp = /"publicIdentifier":"([a-zA-Z-0-9]*)"/gm;
+      var match = myRegexp.exec(content);
+      console.log(match[1]); // abc 
+      important_user_id = 'in/' + match[1]
 
+      //const important_user_id = $('[data-control-name="identity_profile_photo"]').parent().attr('href');
+      
       await page.close()
       if (idCallback) {
         idCallback(important_user_id);
