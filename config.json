@@ -1,0 +1,22 @@
+{
+  "email": "willl.b.white@gmail.com",
+  "password": "+d=bVpC4!3ihPc:",
+  "cookiesFile": "",
+  "relatedProfilesKeywords": [],
+  "maxConcurrentCrawlers": 3,
+  "profileLoadWaitTime": 5000,
+  "saveDirectory": "./crawledProfiles",
+  "puppeteerArgs": { "args": ["--no-sandbox"] },
+  "isHeadless": true,
+  "hasToLog": true,
+  "proxyAddress": null,
+  "rootProfiles": [
+    "https://www.linkedin.com/in/natashanakandaul98/",
+    "https://www.linkedin.com/in/mehere-maladina-69b2a992/",
+    "https://www.linkedin.com/in/alissa-bott-72b334b2/",
+    "https://www.linkedin.com/in/anna-collyer-08055146/",
+    "https://www.linkedin.com/in/nikki-o-leary-60898183/"
+  ],
+  "interProfileWaitTime": 1000,
+  "avoidAlreadyCrawled": false
+}
