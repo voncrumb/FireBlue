@@ -1,12 +1,19 @@
 {
   "dependencies": {
+<<<<<<< Updated upstream
+=======
+    "cheerio": "^1.0.0-rc.3",
+>>>>>>> Stashed changes
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "json": "^10.0.0",
     "lerna": "^3.16.4",
     "mongoose": "^5.10.9",
+<<<<<<< Updated upstream
     "react-spoiler": "^0.4.3",
+=======
+>>>>>>> Stashed changes
     "scrapedin": "^1.0.21"
   },
   "name": "tindev"

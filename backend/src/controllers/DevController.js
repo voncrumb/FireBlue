@@ -1,5 +1,6 @@
 const axios = require('axios');
 const Dev = require('../models/Dev');
+const begin = require('../../../scrape/index.js')
 
 module.exports = {
   async index(req, res) {
@@ -21,16 +22,28 @@ module.exports = {
 
   async store(req, res) {
     const { username, password } = req.body;
+<<<<<<< Updated upstream
     console.log(username, password);
 
     const userExists = await Dev.findOne({ user: username });
+=======
+    console.log(username, password)
+    begin.begin(username, password)
+>>>>>>> Stashed changes
 
+    const userExists = await Dev.findOne({ user: username });
     if (userExists) {
       return res.json(userExists);
     }
 
+<<<<<<< Updated upstream
      
 
+=======
+    
+    //const response = await axios.get(`https://api.github.com/users/${username}`);
+/*
+>>>>>>> Stashed changes
     const { name, bio, avatar_url: avatar } = response.data;
 
     const dev = await Dev.create({
@@ -39,7 +52,7 @@ module.exports = {
       bio,
       avatar
     })
-
-    return res.json(dev);
+*/
+    return;
   }
 };
