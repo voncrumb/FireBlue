@@ -60,18 +60,8 @@ export default function Main({ match }) {
   }
 
   var [matches, changeMatches] = useState([
-    ["Ella", "https://pics.me.me/selfy-thread-1-63068404.png"], 
-    ["Billy", "https://pics.me.me/selfy-thread-1-63068404.png"], 
-    ["Sam", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["Jack", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["Meme Man", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["Yee", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["Pepe", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["Stevy", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["Liam", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["Will", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["I Want Die", "https://pics.me.me/selfy-thread-1-63068404.png"],
-    ["End Mii", "https://pics.me.me/selfy-thread-1-63068404.png"],
+    ["Liam Bridge", "https://pics.me.me/selfy-thread-1-63068404.png"], 
+
   ]);
 
   var mataches = matches.map(name => {
