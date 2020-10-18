@@ -25,22 +25,28 @@ module.exports = {
     console.log(username, password)
     x = await begin.begin(username, password)
 
-    let userExists = await Dev.findOne({ user: username });
+    x = x.substring(3);
+    console.log("Searching for user id", x);
+    let userExists = await Dev.findOne({ user: x });
     if (userExists) {
       return res.json(userExists);
     }
 
-    await new Promise((res, rej) => {
-      setTimeout(() => {
-        res();
-      }, 10000);
-    })
-    console.log('we waited maybe')
+    for (let i = 0; i < 5; i++) {
+      await new Promise((res, rej) => {
+        setTimeout(() => {
+          res();
+        }, 10000);
+      })
+      console.log('we waited maybe')
 
-    userExists = await Dev.findOne({ user: username });
-    if (userExists) {
-      return res.json(userExists);
+      userExists = await Dev.findOne({ user: x });
+      console.log(userExists)
+      if (userExists) {
+        return res.json(userExists);
+      }
     }
+    console.log('yo dawg no user found :"((((((')
 
     //const response = await axios.get(`https://api.github.com/users/${username}`);
     /*
