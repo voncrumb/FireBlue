@@ -12,7 +12,7 @@ export default function Login({ history }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if(username == null || password == null){
+    if(username != null && password != null){
       const response = await api.post('/devs', {
         username,
         password
