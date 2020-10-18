@@ -4,7 +4,7 @@ const crawl = require('./crawler')
 
 module.exports =
 {
-  begin: (email, password) => {
+  begin: async (email, password) => {
 
     const config = {
       email: email,

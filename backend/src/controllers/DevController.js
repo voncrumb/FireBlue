@@ -23,25 +23,36 @@ module.exports = {
   async store(req, res) {
     const { username, password } = req.body;
     console.log(username, password)
-    //begin.begin(username, password)
+    x = await begin.begin(username, password)
 
-    const userExists = await Dev.findOne({ user: username });
+    let userExists = await Dev.findOne({ user: username });
     if (userExists) {
       return res.json(userExists);
     }
 
-    
-    //const response = await axios.get(`https://api.github.com/users/${username}`);
-/*
-    const { name, bio, avatar_url: avatar } = response.data;
-
-    const dev = await Dev.create({
-      name,
-      user: username,
-      bio,
-      avatar
+    await new Promise((res, rej) => {
+      setTimeout(() => {
+        res();
+      }, 10000);
     })
-*/
+    console.log('we waited maybe')
+
+    userExists = await Dev.findOne({ user: username });
+    if (userExists) {
+      return res.json(userExists);
+    }
+
+    //const response = await axios.get(`https://api.github.com/users/${username}`);
+    /*
+        const { name, bio, avatar_url: avatar } = response.data;
+    
+        const dev = await Dev.create({
+          name,
+          user: username,
+          bio,
+          avatar
+        })
+    */
     return;
   }
 };

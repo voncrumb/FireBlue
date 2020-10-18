@@ -26,7 +26,7 @@ puppeteer.use(
 )
 
 // puppeteer usage as normal
-puppeteer.launch({ headless: true }).then(async browser => {
+puppeteer.launch({ headless: false }).then(async browser => {
   const page = await browser.newPage()
   await page.goto('https://www.google.com/recaptcha/api2/demo')
 
@@ -91,3 +91,4 @@ profile.save(function (err) {
   console.log("saved")
 });
 
+*/
