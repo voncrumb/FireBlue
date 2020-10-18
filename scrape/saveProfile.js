@@ -28,7 +28,7 @@ const DevSchema = new mongoose.Schema({
   profile: {
     name: { type: String, required: true },
     headline: String,
-    imageurl: { type: String, default: "https://static.wikia.nocookie.net/virtualyoutuber/images/e/e8/Shirakami_Fubuki_Portrait.jpg" },
+    imageurl: { type: String, default: "https://qph.fs.quoracdn.net/main-qimg-cf89e8e6daa9dabc8174c303e4d53d3a" },
     location: String,
     summary: String
   },
@@ -49,12 +49,16 @@ const Dev = mongoose.model('Dev', DevSchema)
 module.exports = async (profileId, content, injection) => {
 
   console.log('saving')
-  //console.log(content)
+  console.log(content)
   
   const userExists = await Dev.findOne({ user: profileId });
   if (userExists || !content.profile) {
     // TODO append to list sources of the person that's currently scanning them if they are not already in the sources array (maybe store userid or email)
     return;
+  }
+
+  if (/data.*/.test(content.profile.imageurl)) {
+    content.profile.imageurl = "https://qph.fs.quoracdn.net/main-qimg-cf89e8e6daa9dabc8174c303e4d53d3a"
   }
 
   profile = new Dev({

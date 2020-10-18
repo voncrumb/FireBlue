@@ -25,7 +25,6 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
   })
     .then(async () => {
 
-      console.log(await page.url());
 
       console.log("Somethings wrong")
       logger.info('logged feed page selector found')
@@ -45,37 +44,23 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
       //console.log("IDCALLBACK IN LOGIN.JS", idCallback)
       */
       //const important_user_id = $('[data-control-name="identity_profile_photo"]').parent().attr('href');
-      
+
       await page.close()
       if (idCallback) {
         console.log("FOUND USER", important_user_id)
         //alreadyBrowser(browser);
+        await browser.close()
         idCallback(important_user_id);
+
         return;
       }
 
     })
     .catch(async () => {
-
+      console.log("yuhhhhhhhhhhhhhhh")
       logger.warn('we in the catch lmaooooo successful login element was not found, we solving bitches')
-      /*
-      await page.evaluate(() => {
-        async () => {
 
-          const e = document.querySelector('.flow-challenge-content')
-          if (e) {
-            for (const frame of page.mainFrame().childFrames()) {
-              // Attempt to solve any potential reCAPTCHAs in those frames
-              await frame.solveRecaptchas()
-              logger.warn('FRAME solveRecaptchas xd')
-            }
-            await page.solveRecaptchas()
-            await Promise.all([
-              page.waitForNavigation()
-            ])
-          }
-        }
-      })
+      /*
       try {
         for (const frame of page.mainFrame().childFrames()) {
             // Attempt to solve any potential reCAPTCHAs in those frames
@@ -130,7 +115,29 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
 
       if (page.$(manualChallengeRequested)) {
         logger.warn('manual check was required')
-        return Promise.reject(new Error(`linkedin: manual check was required, verify if your login is properly working manually or report this YEET`))
+
+
+        logger.warn('if e :thinking:')
+        var promises = [];
+        for (const frame of page.mainFrame().childFrames()) {
+          // Attempt to solve any potential reCAPTCHAs in those frames
+          //promises.push(frame.solveRecaptchas());
+          logger.warn('FRAME solveRecaptchas xd')
+        }
+        //promises.append(page.solveRecaptchas());
+        await Promise.any(promises);
+        logger.warn('b')
+
+        await Promise.all([
+          
+          page.waitForNavigation()
+        ])
+
+        logger.warn('c')
+
+
+        //        return Promise.reject(new Error(`linkedin: manual check was required, verify if your login is properly working manually or report this YEET`))
+        return Promise.resolve();
       }
 
       logger.error('could not find any element to retrieve a proper error')
