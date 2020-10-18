@@ -24,17 +24,29 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
     timeout: 15000
   })
     .then(async () => {
+
+      console.log(await page.url());
+
       console.log("Somethings wrong")
       logger.info('logged feed page selector found')
 
       const content = await page.content();
-      const $ = cheerio.load(content)
+      //console.log(content)
+      const $ = cheerio.load(content);
 
+      var myRegexp = /"publicIdentifier":"([a-zA-Z-0-9]*)"/gm;
+      var match = myRegexp.exec(content);
+      console.log(match[1]); // abc 
+      important_user_id = 'in/' + match[1]
+      /*
       const important_user_id = $('[data-control-name="identity_welcome_message"]').parent().attr('href');
       console.log(important_user_id)
       await page.close()
       //console.log("IDCALLBACK IN LOGIN.JS", idCallback)
-
+      */
+      //const important_user_id = $('[data-control-name="identity_profile_photo"]').parent().attr('href');
+      
+      await page.close()
       if (idCallback) {
         console.log("FOUND USER", important_user_id)
         //alreadyBrowser(browser);
@@ -118,7 +130,6 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
 
       if (page.$(manualChallengeRequested)) {
         logger.warn('manual check was required')
-        console.log(await page._client.send('Network.getAllCookies'));
         return Promise.reject(new Error(`linkedin: manual check was required, verify if your login is properly working manually or report this YEET`))
       }
 
