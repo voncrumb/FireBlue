@@ -12,14 +12,18 @@ export default function Login({ history }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const response = await api.post('/devs', {
-      username,
-      password
-    });
+    if(username == null || password == null){
+      const response = await api.post('/devs', {
+        username,
+        password
+      });
+  
+      const { _id } = response.data;
+  
+      history.push(`/dev/${_id}`);
+    }
 
-    const { _id } = response.data;
-
-    history.push(`/dev/${_id}`);
+    
   }
 
   return (
@@ -34,6 +38,7 @@ export default function Login({ history }) {
         <input 
           placeholder="LinkedIn Password"
           value={password}
+          type="password"
           onChange={e => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
