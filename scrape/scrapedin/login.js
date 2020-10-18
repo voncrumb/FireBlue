@@ -56,9 +56,6 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
 
     })
     .catch(async () => {
-<<<<<<< Updated upstream
-      logger.warn('successful login element was not found')
-=======
 
       logger.warn('we in the catch lmaooooo successful login element was not found, we solving bitches')
       /*
@@ -96,7 +93,6 @@ module.exports = async (browser, email, password, idCallback = undefined) => {
           throw (error)
       }*/
 
->>>>>>> Stashed changes
       const emailError = await page.evaluate(() => {
         const e = document.querySelector('div[error-for=username]')
         if (!e) { return false }
