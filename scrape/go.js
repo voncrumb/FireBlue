@@ -19,7 +19,7 @@ puppeteer.use(
   RecaptchaPlugin({
     provider: {
       id: '2captcha',
-      token: 'XXXXXXX' // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY ⚡
+      token: '17984413ca676d34ca76c1617f9b3e33' // REPLACE THIS WITH YOUR OWN 2CAPTCHA API KEY ⚡
     },
     visualFeedback: true // colorize reCAPTCHAs (violet = detected, green = solved)
   })
